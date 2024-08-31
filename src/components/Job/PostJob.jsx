@@ -32,7 +32,7 @@ const PostJob = () => {
       setSalaryTo("");
       setFixedSalary("");
     }
-    await axios.post("https://job-seeking-backend-deployment-4-qyac.onrender.com/api/v1/job/post", fixedSalary.length>=4 ? {title,category,country,city,location,fixedSalary,description}:{title,category,country,city,location,salaryFrom,salaryTo,description},
+    await axios.post("http://localhost:4000/api/v1/job/post", fixedSalary.length>=4 ? {title,category,country,city,location,fixedSalary,description}:{title,category,country,city,location,salaryFrom,salaryTo,description},
   {
     withCredentials: true,
     headers: {

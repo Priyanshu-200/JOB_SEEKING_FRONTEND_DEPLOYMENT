@@ -16,7 +16,7 @@ const MyJobs = () => {
   useEffect(()=>{
     const fetchJobs = async()=>{
       try{
-        const {data} = await axios.get("https://job-seeking-backend-deployment-4-qyac.onrender.com/api/v1/job/getmyJobs",{withCredentials: true});
+        const {data} = await axios.get("http://localhost:4000/api/v1/job/getmyJobs",{withCredentials: true});
         setMyJobs(data.myjobs);
       } catch (error){
         toast.error(error.response.data.message);
@@ -41,7 +41,7 @@ const MyJobs = () => {
   //Function For editing a job
   const handleUpdateJob = async(jobId)=>{
     const updatedJob = myJobs.find((job)=> job._id===jobId);
-    await axios.put(`https://job-seeking-backend-deployment-4-qyac.onrender.com/api/v1/job/update/${jobId}`,updatedJob,{
+    await axios.put(`http://localhost:4000/api/v1/job/update/${jobId}`,updatedJob,{
       withCredentials: true
     }).then((res)=>{
       toast.success(res.data.message);
@@ -53,7 +53,7 @@ const MyJobs = () => {
   }
   //Function For Deleting Job
   const handleJobDelete = async(jobId)=>{
-    await axios.delete(`https://job-seeking-backend-deployment-4-qyac.onrender.com/api/v1/job/delete/${jobId}`,{withCredentials: true})
+    await axios.delete(`http://localhost:4000/api/v1/job/delete/${jobId}`,{withCredentials: true})
     .then((res)=>{
       toast.success(res.data.message);
       setMyJobs((prevJobs) => prevJobs.filter(job=>job._id==jobId))
